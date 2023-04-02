@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ABOUT</title>
+<link rel="stylesheet" type="text/css" href="About.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+	
+	<header class="topheader">
+		<h1> <a href="Identity Page Home.html"> FRED TODD </a> </h1>
+		
+	 
+    </header>
+	
+	<header class="bottomheader">
+	
+	<h1> <a href="CONTACT.html">CONTACT</a> </h1>
+	</header>
+	
+	
+	<div class="scroll-box" > 
+	<div class="text-scroll">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod
+    laoreet enim, a fringilla elit luctus vel. Praesent vel bibendum velit,
+    vel tempor velit. Aliquam quis aliquet libero, vel scelerisque quam.
+    Nullam laoreet lorem est, sit amet congue nisl molestie a. Vivamus
+    ullamcorper ante in dolor commodo, non posuere sapien mollis.
+  </p>
+</div>
+	
+	</div>
+	
+	<script>
+$(document).ready(function(){
+  $('.scroll-box').hover(function(){
+    $('.text-scroll').css({
+      'animation-play-state': 'paused'
+    });
+  }, function(){
+    $('.text-scroll').css({
+      'animation-play-state': 'running'
+    });
+  });
+});
+	</script>
+	
+	
+	
+<div class="popUpHolder">
+  <div class="box" id="box1">
+    <a href="Image Gallery.html">CLICK ME 1</a>
+    <button class="popup-close">&times;</button>
+  </div>
+  <div class="box" id="box2">
+    <a href="CONTACT.html">CLICK ME 2</a>
+    <button class="popup-close">&times;</button>
+  </div>
+  <div class="box" id="box3">
+    <a href="Identity Page Home.html">CLICK ME 3</a>
+    <button class="popup-close">&times;</button>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Get all the boxes
+  const boxes = document.getElementsByClassName("box");
+
+  // Function to randomly show one of the boxes
+  function showRandomBox() {
+    // Hide all the boxes
+    for (let i = 0; i < boxes.length; i++) {
+      boxes[i].style.display = "none";
+    }
+
+    // Randomly select a box and make it visible
+    const randomBox = boxes[Math.floor(Math.random() * boxes.length)];
+    randomBox.style.display = "block";
+
+    // Set the box's position to a random spot on the screen
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const boxWidth = randomBox.offsetWidth;
+    const boxHeight = randomBox.offsetHeight;
+    const maxLeft = windowWidth - boxWidth;
+    const maxTop = windowHeight - boxHeight;
+    const randomLeft = Math.floor(Math.random() * maxLeft);
+    const randomTop = Math.floor(Math.random() * maxTop);
+    randomBox.style.left = randomLeft + "px";
+    randomBox.style.top = randomTop + "px";
+  }
+
+  // Attach a click event to the close button of each box
+  const popupCloses = document.getElementsByClassName("popup-close");
+  for (let i = 0; i < popupCloses.length; i++) {
+    popupCloses[i].addEventListener("click", function() {
+      this.parentElement.style.display = "none";
+    });
+  }
+
+  // Call the showRandomBox function again after a random interval between 9 and 20 seconds
+  setInterval(showRandomBox, Math.floor(Math.random() * 11000) + 9000);
+});
+
+</script>
+
+	
+
+</body>
+</html>
